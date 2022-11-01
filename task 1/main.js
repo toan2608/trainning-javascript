@@ -16,9 +16,7 @@
 // task 2: 
 // Given an array of forecasted maximum temperatures, the thermometer displays a string with the given temperatures. 
 // Example: [17, 21, 23] will print in console "... 17ºC in 1 days ... 21ºC in 2 days ... 23ºC in 3 days ..."
-function isUpperCase(character){
 
-}
 function reverse(){
     let text = document.getElementById('input-string').value;
     let i, result="";
@@ -42,5 +40,47 @@ function reverse(){
 }
 
 //____NGuyEn__KHaNh__TOÀn___
+
+
+// tối ưu hơn từ hàm reverse
+function reverse2(){
+    let text = document.getElementById("input-string").value;
+    text = text.toLowerCase();
+    let temp = "";
+    for(let i =0 ; i<text.length;i++){
+        if(text[i] =='_'){
+            if(text[i+1] == null)   break;
+            if(text[i+1] != '_'){
+                temp += text[i+1].toUpperCase();
+                i++;
+            }
+            continue;
+        }
+        else   temp += text[i];
+    }
+    let result = "";
+    result += temp[0].toLowerCase() + temp.substring(1);
+    document.getElementById('input-string').value = result;
+}
+
+
+
+// CÁCH CỦA ANH GIANG HAY
+function changeToCamelCase() {
+    let text = document.getElementById('input-string').value;
+    text = text.replaceAll('_', ' ');
+    text= text.trim();
+    text = text.toLowerCase();
+    let result = '';
+    for(let i=0; i<text.length; ++i) {
+        if(text[i] != ' ') {
+            if(text[i-1] == ' ') result+=text[i].toUpperCase();
+            else result+=text[i];
+        }
+    }
+    document.getElementById('string-result').innerHTML = result;
+    
+}
+   
 
    
