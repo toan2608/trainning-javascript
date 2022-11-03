@@ -24,7 +24,7 @@ main();
 
 
 // Muốn cho người dùng nhập một chuỗi rồi xử lý chuỗi về mảng
-function inputNumber(){
+const inputNumber = () => {
     // let n = document.getElementById('input').value;
     let text = document.getElementById('input-string').value;
     text = text.trim();
@@ -34,12 +34,7 @@ function inputNumber(){
         if(text[i] != ' ' && text[i-1] == ' '){
             first = i;
         }
-        if(text[i] != ' ' && text[i+1] == ' '){
-            last = i+1;
-            array[k] = Number(text.substring(first, last));
-            k++;
-        }
-        if(text[i] != ' ' && text[i+1] == null){
+        if(text[i] != ' ' &&(text[i+1] == ' ' || text[i+1] == null) ){
             last = i+1;
             array[k] = Number(text.substring(first, last));
             k++;
@@ -48,3 +43,6 @@ function inputNumber(){
     let result = display(array,k);
     document.getElementById('display').innerHTML = result;
 }
+
+
+
